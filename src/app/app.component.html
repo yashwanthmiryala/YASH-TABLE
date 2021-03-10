@@ -1,0 +1,55 @@
+<h1>Yash Table</h1>
+<p-table [value]="rows" [columns]="cols" [(selection)]="selectedRows">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+
+      <th *ngFor="let col of columns">
+        {{col.header}}
+      </th>
+      <th>
+
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr [pSelectableRow]="rowData">
+
+      <td>
+        {{rowData['id']}}
+      </td>
+      <td>
+        {{rowData['email']}}
+      </td>
+      <td>
+        {{rowData['first_name']}}
+      </td>
+      <td>
+        {{rowData['last_name']}}
+      </td>
+      <td>
+        <img [src]="rowData['avatar']">
+      </td>
+      <td>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
+      </td>
+    </tr>
+
+  </ng-template>
+</p-table>
+<mat-menu class="mat-menu-panel myMenu" [overlapTrigger]="true" #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
